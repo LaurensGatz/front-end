@@ -1,0 +1,118 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+          <title>front-end ex 1</title>
+        </head>
+        <body onload='main()'>
+            <table id='tbl' border=1></table>
+        </body>
+        <script type='text/javascript'>;
+
+        // Variabelen zijn containers waarin waarden worden bewaard.
+        var myName = "Laurens";
+        let iLike = 'Food';
+        const PI = 3.14;
+        console.log(myName);
+        console.log(iLike)
+        console.log(PI)  
+
+        //Datatypes
+        var mijnVariable = 10; // Een nummer. Nummers worden niet omringd door aanhalingstekens .
+        var mijnVariabele = 'Bob'; // Een string is wat als tekst geldt. Om aan te duiden dat de variabele een string is, moet u die tussen aanhalingstekens zetten.	
+        var mijnVariable = true; // (boolean)Een waarde die waar (true) of niet waar(false) is. De woorden true en false zijn speciale sleutelwoorden in JS en hebben geen aanhalingstekens nodig.	
+        var mijnVariabele = [1,'Bob','Steven',10]; // Een structuur die u toestaat om meerdere waarden in in één enkele referentie op te slaan (een lijst).	
+        // Verwijs naar elk lid van de array op deze manier: mijnVariabele[0], mijnVariabele[1], etc.
+        
+        // Operators
+
+        // Arithmetic operators
+        var x = 5;
+        var y = 2;
+        var z = x + y;
+        var z = 7;
+        // The addition operator (+) adds numbers
+        var x = 5;
+        var y = 2;
+        var z = x - y;
+        var z = 3;
+        // The subtraction operator (-) subtracts numbers
+        var x = 5;
+        var y = 2;
+        var z = x * y;
+        var z = 10;
+        // The multiplication operator (*) multiplies numbers
+        var x = 5;
+        var y = 2;
+        var z = x / y;
+        var z = 2.5;
+        //	The division operator (/) divides numbers
+        var x = 5;
+        var y = 2;
+        var z = x % y;
+        var z = 1;
+        // The modulus operator (%) returns the division remainder
+        var x = 5;
+        x++;
+        var z = x;
+        var z = 6;
+        // The increment operator (++) increments numbers
+        var x = 5;
+        x--;
+        var z = x;
+        var z = 4;
+        // The decrement operator (--) decrements numbers.
+        var x = 5;
+        var z = x ** 2; 
+        var z = 25;
+        // The exponentiation operator (**) raises the first operand to the power of the second operand
+
+        // Assignment operators
+        // += 	x += y	 x = x + y
+        // -=	x -= y   x = x - y
+        // *=	x *= y	 x = x * y
+        // /=	x /= y   x = x / y
+
+
+          function addCell(tr, val) {
+            var td = document.createElement('td');
+        
+            td.innerHTML = val;
+        
+            tr.appendChild(td)
+          }
+        
+        
+          function addRow(tbl, val_1, val_2, val_3) {
+            var tr = document.createElement('tr');
+        
+            addCell(tr, val_1);
+            addCell(tr, val_2);
+            addCell(tr, val_3);
+        
+            tbl.appendChild(tr)
+          }
+        
+          function main() {
+            tbl = document.getElementById('tbl');
+        
+            addRow(tbl, 'var x = 5', 'var z = x ** 2', '25');
+            addRow(tbl, '10 > 9', 'true', '');
+            addRow(tbl, 'var x = 5', 'x==8','false')
+            addRow(tbl, 'var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"', 'var sln = txt.length', '26')
+            addRow(tbl, 'var x = 5', 'x==8','false')
+            addRow(tbl, 'number*string', 'NaN','')
+            addRow(tbl, 'number/null', 'infinity','')
+            addRow(tbl, 'boolean+string', 'truestring','falsestring')
+            
+          }
+        
+        </script>
+        
+        
+        
+        
+        
+        
+        </html>
