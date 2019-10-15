@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="resources/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, paper, scissors, ...</title>
+</head>
+<body>
+<h1>Rock, Paper, Scissors, Lizard, Spock!</h1>
+<div class="logo">
+    <img src="resources/rpsls.png" alt="rpsls">
+</div>
+
+<div class="dropdowns">
+<div>
+    <h3>Amount of players</h3>
+    <select name="players" id="players">
+        <option value="1">1 Player</option>
+        <option value="2">2 Players</option>
+    </select>
+</div>
+
+<div>
+    <h3>Player 1</h3>
+    <select name="p1choice" id="p1choice"></select>
+</div>
+
+<div>
+    <h3>Player 2</h3>
+    <select name="p2choice" id="p2choice" disabled></select>
+</div>
+
+</div>
+
+<div class="playbttn">
+    <button id="play">Play</button>
+</div>
+<div class="rslt">
+<div id="result"></div>
+</div>
+<script>
+    let play = document.getElementById("play");
+    play.addEventListener("click", playGame);
+    console.log(play);
+    let players = document.getElementById("players");
+    players.addEventListener("change", changeGame);
+    console.log(players)
+    let p1choice = document.getElementById("p1choice");
+    let p2choice = document.getElementById("p2choice");
+    let choices = ["rock", "paper", "scissors", "lizard", "spock"];
+    console.log(choices)
+    for (choice of choices) {
+        let element = document.createElement("option");
+        element.value = choice;
+        element.innerHTML = choice;
+        p1choice.append(element);
+    }
+    for (choice of choices) {
+        let element = document.createElement("option");
+        element.value = choice;
+        element.innerHTML = choice;
+        p2choice.append(element);
+    }
+    function playGame(event){
+        let p1value = p1choice.value;
+        let p2value;
+        if (p2choice.disabled === false) {
+            p2value = p2choice.value;
+            showWinner();    
+        }
+        else {
+            p2value = choices[Math.floor(Math.random()*choices.length)];
+            showWinner1player(p2value);
+        }
+    }
+    function changeGame(event){
+        if (players.value === "1") {
+            p2choice.disabled = true;
+        }
+        else {
+            p2choice.disabled = false;
+        }
+    }
+
+    function showWinner() {
+
+    let p1value = p1choice.value;
+    let p2value = p2choice.value;                
+
+    if (p1value == p2value) {
+        console.log("Draw");
+        document.getElementById("result").innerHTML= "Draw";
+    } else if ((p1value == "rock") && (p2value == "paper")) {
+        console.log("Computer");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    } else if ((p1value == "paper") && (p2value == "rock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    } else if ((p1value == "rock") && (p2value == "scissors")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissors") && (p2value == "rock")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    } else if ((p1value == "paper") && (p2value == "scissors")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    } else if ((p1value == "lizard") && (p2value == "paper")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "lizard") && (p2value == "spock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "lizard") && (p2value == "scissor")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "lizard") && (p2value == "rock")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "spock") && (p2value == "paper")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "spock") && (p2value == "lizard")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "spock") && (p2value == "rock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "spock") && (p2value == "scissor")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "rock") && (p2value == "lizard")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "rock") && (p2value == "spock")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "paper") && (p2value == "lizard")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }  else if ((p1value == "paper") && (p2value == "spock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "paper")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "lizard")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "spock")) {
+        console.log("Player 2 wins");
+        document.getElementById("result").innerHTML= "Player 2 wins";
+    }
+    }
+
+    function showWinner1player(p2value) {
+
+    let p1value = p1choice.value;
+    let computerResult = p2value; 
+
+    if (p1value == p2value) {
+        console.log("Draw");
+        document.getElementById("result").innerHTML= "Draw";
+    } else if ((p1value == "rock") && (p2value == "paper")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    } else if ((p1value == "paper") && (p2value == "rock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    } else if ((p1value == "rock") && (p2value == "scissors")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissors") && (p2value == "rock")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    } else if ((p1value == "paper") && (p2value == "scissors")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    } else if ((p1value == "lizard") && (p2value == "paper")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "lizard") && (p2value == "spock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "lizard") && (p2value == "scissor")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "lizard") && (p2value == "rock")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "spock") && (p2value == "paper")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "spock") && (p2value == "lizard")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "spock") && (p2value == "rock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "spock") && (p2value == "scissor")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "rock") && (p2value == "lizard")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "rock") && (p2value == "spock")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "paper") && (p2value == "lizard")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }  else if ((p1value == "paper") && (p2value == "spock")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "paper")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "lizard")) {
+        console.log("Player 1 wins");
+        document.getElementById("result").innerHTML= "Player 1 wins";
+    }  else if ((p1value == "scissor") && (p2value == "spock")) {
+        console.log("Computer wins");
+        document.getElementById("result").innerHTML= "Computer wins";
+    }
+    }
+
+
+</script>
+</body>
+</html>

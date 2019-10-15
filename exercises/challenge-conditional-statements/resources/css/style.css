@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    color: rgb(19, 77, 128);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 200px ;
+    border-radius: 2%;
+    background: rgb(242,246,248);
+    background: -moz-linear-gradient(top,  rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(181,198,208,1) 51%, rgba(224,239,249,1) 100%);
+    background: -webkit-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(216,225,231,1) 50%,rgba(181,198,208,1) 51%,rgba(224,239,249,1) 100%);
+    background: linear-gradient(to bottom,  rgba(242,246,248,1) 0%,rgba(216,225,231,1) 50%,rgba(181,198,208,1) 51%,rgba(224,239,249,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 );
+}
+
+h3 {
+    padding: 0 0 5px 0;
+    color: rgb(28, 28, 29);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    animation-name: orbit;
+    animation-duration: 5s;
+    
+}
+
+     @keyframes orbit {
+        
+        0% {
+            transform: rotateZ(0deg);}
+        100% {
+            transform: rotateZ(-360deg);} 
+    }
+
+
+.logo img {
+    max-width: 200px;
+    height: auto;
+}
+.dropdowns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.dropdowns div {
+    padding: 20px;
+}
+
+.playbttn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+button {
+    padding: 10px;
+    font-size: 30px;  
+    color:  rgb(19, 77, 128);
+}
+
+.rslt {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(28, 28, 29);
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+
+}
