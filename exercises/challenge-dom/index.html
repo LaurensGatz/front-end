@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/513dc8e6f3.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+</head>
+
+<style>
+
+    @font-face {
+        font-family: myFirstFont;
+        src: url(pokemon_gb-webfont.woff);
+        font-weight: bold;
+    }
+
+    html, body{
+        width: 100%;
+        height: 100%;
+    }
+
+    .pokedex {
+        display: flex;
+    }
+
+    .header {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;  
+    }
+
+    #pokesearch, #search, #previous, #next {
+        margin: 5px;
+    }
+
+    #pokesearch {
+        border-radius: 2%;
+    }
+
+    #search, #previous, #next, #listbutton {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+    .container, .container2 {
+        background: rgb(248,80,50);
+        background: -moz-linear-gradient(-45deg,  rgba(248,80,50,1) 0%, rgba(241,111,92,1) 49%, rgba(246,41,12,1) 56%, rgba(240,47,23,1) 72%, rgba(231,56,39,1) 100%);
+        background: -webkit-linear-gradient(-45deg,  rgba(248,80,50,1) 0%,rgba(241,111,92,1) 49%,rgba(246,41,12,1) 56%,rgba(240,47,23,1) 72%,rgba(231,56,39,1) 100%);
+        background: linear-gradient(135deg,  rgba(248,80,50,1) 0%,rgba(241,111,92,1) 49%,rgba(246,41,12,1) 56%,rgba(240,47,23,1) 72%,rgba(231,56,39,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=1 );
+        box-shadow: inset 0 0 0 4px black;
+        width: 450px;
+        height: 600px;
+        border-radius: 2%;    
+    }
+
+    .container2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .screen {
+        box-sizing: border-box;
+        background: white;
+        width: 400px;
+        height: 400px;
+        margin: 0px auto;
+        box-shadow: inset 0 0 0 4px black;  
+        border-radius: 2%;  
+        
+    }
+
+    .screen2 {
+        box-sizing: border-box;
+        background: white;
+        width: 400px;
+        height: 400px;
+        margin: 12px auto;
+        box-shadow: inset 0 0 0 4px black;  
+        border-radius: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    .top {
+        text-align: center;
+    }
+
+    #name {
+        font-size: 20px;
+        padding-top: 15px;
+        font-family: myFirstFont;
+        font-weight: bolder;
+        text-transform: uppercase;
+    }
+
+    .info {
+        max-width: 380px;
+        padding-left: 10px;
+    }
+
+    .info div {
+        padding: 5px;
+    }
+
+    #id {
+        font-family: myFirstFont;
+    
+    }
+
+    #moves {
+        font-family: myFirstFont;
+        font-size: 16px;
+    }
+
+    #abilities {
+        font-family: myFirstFont;
+        font-size: 16px;
+    }
+
+    #weight {
+        font-family: myFirstFont;
+        font-size: 16px;
+    }
+
+    #img {
+        width: 200px;
+        height: auto;
+        margin-left: 100px;
+    }
+
+    .random {
+        width: 80px;
+        height: 20px;
+        box-shadow: inset 0 0 0 2px black;  
+        border-radius: 6%;
+        background: rgb(252,234,187);
+        background: -moz-linear-gradient(-45deg,  rgba(252,234,187,1) 0%, rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%);
+        background: -webkit-linear-gradient(-45deg,  rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
+        background: linear-gradient(135deg,  rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 );
+        margin: 14px auto;
+    }
+
+    .random2 {
+        width: 50px;
+        height: 50px;
+        box-shadow: inset 0 0 0 2px black;
+        border-radius: 50%;
+        background: rgb(179,220,237);
+        background: -moz-linear-gradient(-45deg,  rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+        background: -webkit-linear-gradient(-45deg,  rgba(179,220,237,1) 0%,rgba(41,184,229,1) 50%,rgba(188,224,238,1) 100%);
+        background: linear-gradient(135deg,  rgba(179,220,237,1) 0%,rgba(41,184,229,1) 50%,rgba(188,224,238,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=1 );
+        margin: 12px auto;
+    }
+
+    .cylinder {
+	    overflow: hidden;
+	    width: 50px;
+	    height: 600px;
+	    border-radius: 50px/25px;
+        background-color: rgba(170, 2, 2, 0.856);
+        border-top: 4px solid black;
+        border-bottom: 4px solid black;
+    }
+
+    .cylinder2 {
+        overflow: hidden;
+	    width: 50px;
+	    height: 200px;
+	    border-radius: 50px/25px;
+        background-color: rgba(199, 8, 8, 0.918);
+        border-top: 4px solid black;
+        border-bottom: 4px solid black;
+        margin-top: 180px;
+    }
+
+    #listbutton {
+        margin-top: 25px;
+        margin-left: 210px;
+        margin-bottom: 10px;
+    }
+
+    #list {
+        list-style-image: url('masterball.jpg');
+        font-family: myFirstFont;
+        height: 360px; 
+        width: 340px;
+        overflow-y: scroll;
+    }
+
+    ul>li:nth-child(odd){
+        background: rgb(216, 208, 208);
+    }
+
+    ul>li {
+        padding-left: 5px;
+        line-height: 27px;
+    }
+
+    ul>li:hover {
+        background-color: rgba(255, 0, 0, 0.377);
+    }
+
+    #pokemonlogo {
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+
+
+</style>
+
+<body>
+    <div class="pokedex">
+        <div class="container">
+            <div class="header">
+                <div><input type="text" id="pokesearch" name="pokesearch" placeholder="Search...">
+                     <label for="pokesearch"><button id="search"><i class="fas fa-search"></i></button></label>
+    
+                     <button id="previous"><i class="fas fa-angle-left"></i></button>
+                     <button id="next"><i class="fas fa-angle-right"></i></button>
+                </div>
+
+                
+            </div>
+
+            <div class="random2"></div>
+
+            <div class="screen">
+                <div class="top">
+                    <div id="name"></div>
+                </div>
+                <img id="img" src="" alt="">
+                <div class="info">
+                    <div id="id"></div>
+                    <div id="moves"></div>
+                    <div id="abilities"></div>
+                    <div id="weight"></div>
+                </div>
+            </div>
+            <div class="random"></div>
+        </div>
+
+        <div class="cylinder">
+            <div class="cylinder2"></div>
+        </div>
+
+        <div class="container2">
+            <button id="listbutton"><i class="fas fa-list-ul"></i></button>
+            <img id="pokemonlogo" src="pokemonlogo.png" alt="Pokemon logo">
+            <div class="screen2">
+               <ul id="list"></ul> 
+            </div>
+        </div>
+    
+    </div>
+
+
+    <script>
+        /*==================================================================================================
+        ======================================== Magic Happens Here! =======================================
+        ==================================================================================================*/
+        //Variables are declared.
+        let base_url = "https://pokeapi.co/api/v2/";
+        console.log(base_url)
+        let poke_search = document.getElementById("pokesearch");
+        console.log(poke_search)
+        let search = document.getElementById("search");
+        let previous = document.getElementById("previous");
+        let next = document.getElementById("next");
+        let list = document.getElementById("list");
+        console.log(list)
+        let pokemon_name;
+        console.log(pokemon_name)
+        let pokemon_id;
+        let pokemon_moves;
+        let pokemon_abilities;
+        let pokemon_image;
+        let pokemon_weight;
+        let listbutton = document.getElementById("listbutton")
+        
+        //EventListeners are added to HTML elements.
+        search.addEventListener("click", function() {
+            LoadPokemon(poke_search.value);
+        });
+        poke_search.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                LoadPokemon(poke_search.value);
+            }
+        })
+        previous.addEventListener("click", function() {
+            if (pokemon_id === undefined) {
+                pokemon_id = 2;
+            }
+            LoadPokemon(--pokemon_id);
+        });
+        next.addEventListener("click", function() {
+            if (pokemon_id === undefined) {
+                pokemon_id = 0;
+            }
+            LoadPokemon(++pokemon_id);
+        })
+        
+        listbutton.addEventListener("click", function() {
+            LoadPokemonList()
+        })
+
+        //Function that looks up the data for a pokemon when it's given the pokemon's name or id number.
+        function LoadPokemon(pokemon){
+            let request = new XMLHttpRequest();
+            let dots = 1;
+            request.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status == 200 && pokemon !== "") {
+                    SetVariables(JSON.parse(this.responseText));
+                }
+                else {
+                    SetVariables(dots++);
+                }
+            }
+            request.open("GET", base_url + "pokemon/" + pokemon.toString().toLowerCase(), true);
+            request.send();
+        }
+        //This function changes the variables with the most recent pokemon's information.
+        function SetVariables(data){
+            if(typeof data === "number") {
+                console.log("Searching for data" + ".".repeat(data))
+            }
+            else {
+                console.log("Data found!")
+                pokemon_name = data.name;
+                pokemon_id = data.id;
+                pokemon_moves = data.moves.map(x => x.move.name);
+                pokemon_abilities = data.abilities.map(x => x.ability.name);
+                pokemon_image = data.sprites.front_default;
+                pokemon_weight = data.weight;
+                DoThingsWithTheDom();
+            }
+        }
+        //This function loads all of the pokemons and stores them in a list in your HTML.
+        //Clicking one of the list items will then look up data for that specific pokemon!
+        function LoadPokemonList() {
+            let request = new XMLHttpRequest();
+            list.innerHTML = "";
+            request.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status == 200) {
+                    let pokemon_list = JSON.parse(this.responseText).results.map(x => x.name);
+                    for (pokemon of pokemon_list) {
+                        let li = document.createElement("li");
+                        li.innerHTML = pokemon;
+                        li.addEventListener("click", function() {
+                            LoadPokemon(this.innerHTML);
+                        })
+                        list.append(li);
+                    }
+                }
+            }
+            request.open("GET", base_url + "pokemon?offset=0&limit=807", true);
+            request.send();
+        }
+        //Function that you can call to see the current pokemon's information
+        function LogPokeData() {
+            console.log("Name: " + pokemon_name
+            + "\n" + "ID: " + pokemon_id
+            + "\n" + "Moves:", pokemon_moves
+            , "\n" + "Abilities:", pokemon_abilities
+            , "\n" + "Image URL: " + pokemon_image
+            + "\n" + "Weight: " + pokemon_weight);
+        }
+        /*==================================================================================================
+        ======================================== Magic Ends Here! ==========================================
+        ==================================================================================================*/
+        function DoThingsWithTheDom() {
+            document.getElementById("name").innerHTML = pokemon_name;
+
+            document.getElementById("id").innerHTML = "ID: " + pokemon_id;
+
+            document.getElementById("moves").innerHTML = "MOVES:" + pokemon_moves.slice(0,3);
+
+            document.getElementById("abilities").innerHTML = "ABILITIES:" + pokemon_abilities.slice(0,1);
+
+            document.getElementById("img").src = pokemon_image;
+
+            document.getElementById("weight").innerHTML = "WEIGHT: " + pokemon_weight;
+
+
+            /*
+            Write your code here!
+            The following variables contain data for you to use. Be careful with the data types (some are numbers, some are strings and some are arrays)! 
+                pokemon_name
+                pokemon_id
+                pokemon_moves
+                pokemon_abilities
+                pokemon_image
+                pokemon_weight
+            The goal of the exercise is for you to display this information in your HTML.
+            You can do this by placing empty tags in your HTML, and the assigning their content with JS.
+            But you can also generate the HTML with document.createElement().
+            */
+        }
+    </script>
+    
+</body>
+</html>
