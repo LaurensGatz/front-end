@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        ul {
+            list-style-type: none;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+        }
+        #calculator {
+            width: 300px;
+            height: 350px;
+            background-color: lightblue;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly
+        }
+        #calc-preview {
+            width: 90%;
+            height: 100px;
+            background-color: aliceblue;
+            color: gray;
+            text-align: right;
+        }
+        #calc-buttons {
+            width: 90%;
+            height: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #calc-numbers {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        #operations {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .hovering {
+            border-color: hotpink;
+            border-width: 3px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="calculator">
+
+        <div id="calc-preview">Make a calculation...</div>
+
+        <div id="calc-buttons">
+
+            <ul id="calc-numbers">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>0</button>
+            </ul>
+
+            <div id="operations">
+                <button>+</button>
+                <button>-</button>
+                <button>*</button>
+                <button>/</button>
+                <button>%</button>
+                <button>=</button>
+                <button>C</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        
+       // VARIABLES
+let buttons = document.querySelectorAll("button");
+let buttonsValues = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, "+", "-", "*", "/", "%", "=", "C"];
+let preview = document.getElementById("calc-preview");
+
+let val1 = 0;
+let val2 = 0;
+let operator = null;
+let startApp = true; // decides if we're starting with the operation
+let startNum = true; // decides if the first num is 0
+
+// EVENT LISTENERS
+// click on numbers 0-9
+for (let i = 0; i < 10; i++) {
+    buttons[i].addEventListener("click", function() {
+        insert(i);
+    });
+}
+
+// click on operators +, -, *, /, %
+for (let i = 10; i <= 14; i++) {
+    buttons[i].addEventListener("click", function() {
+        operation(i);
+    });
+}
+
+// click on =
+buttons[15].addEventListener("click", function() {
+    equals();
+});
+
+// click on Clear
+buttons[16].addEventListener("click", function() {
+    clear();
+});
+
+// mouseover
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("mouseover", function() {
+        this.classList.add("hovering");
+    });
+}
+
+// mouseout
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("mouseout", function() {
+        this.classList.remove("hovering");
+    });
+}
+
+// FUNCTIONS
+// 0-9
+function insert(btnIndexNum) {
+    
+    // de eerste nr is 0
+    if (startNum == true) {
+        // wel 0 is
+        if (buttonsValues[btnIndexNum] === 0) {
+            console.log("is nul");
+        } else {
+        // niet 0 is
+            console.log("is niet nul");
+            startNum = false;
+            preview.innerText = "";
+            preview.innerText += buttonsValues[btnIndexNum];
+        }
+    // De eerste nr is niet 0
+    } else {
+        
+        // leeg als er al een operator is gekozen
+        if (operator != null) {
+            preview.innerText = "";
+        }
+        preview.innerText += buttonsValues[btnIndexNum];
+    }
+
+}
+
+// operators 
+function operation(btnIndexNum) {
+    
+    if (operator != null) {
+        preview.innerText = "";
+    }
+    
+    operator = buttonsValues[btnIndexNum];
+    val1 = parseInt(preview.innerText);
+}
+
+// equals
+function equals() {
+    
+    if (operator != null) {
+        
+        val2 = parseInt(preview.innerText);
+        switch(operator) {
+            case "+":
+                result = val1 + val2;
+                break;
+            case "-":
+                result = val1 - val2;
+                break;
+            case "*":
+                result = val1 * val2;
+                break;
+            case "/":
+                result = val1 / val2;
+                break;
+            case "%":
+                result = val1 % val2;
+                break;
+        }
+        
+        preview.innerText = result;
+        
+    }  else {
+        console.log("do nothing");
+    }
+}
+
+// clear
+function clear() {
+    preview.innerText = 0;
+    val1 = 0;
+    val2 = 0;
+    operator = null;
+    startApp = true;
+    startNum= true;
+}
+
+
+    /* const calculator = {
+        displayValue: '0',
+        firstOperand: null,
+        waitingForSecondOperand: false,
+        operator: null,
+    };
+
+        function updateDisplay() {
+            const display = document.querySelector('#calc-preview');
+            display.value = calculator.displayValue;
+        }
+
+        updateDisplay();
+
+    /*const keys = document.querySelector('#calc-buttons');
+    keys.addEventListener('click', (event) => {
+        const { target } = event;
+        if (!target.matches('button')) {
+            return;
+        }
+
+        if (target.idList.contains('#operations')) {
+            console.log('#operations', target.value);
+            return;
+        }
+
+        if (target.idList.contains('#calc-numbers')) {
+            console.log('#calc-numbers', target.value);
+            return;
+        }
+    })
+
+    document.getElementById("calc-preview").innerHTML = "value";
+
+
+        /*if (target.classList.contains('decimal')) {
+            console.log('decimal', target.value);
+            return;
+        }
+
+        if (target.classList.contains('all-clear')) {
+            console.log('clear', target.value);
+            return;
+        }
+
+        console.log('digit', target.value);
+    });*/
+        
+        /* 
+        Write your script here!
+        Note: it is advised to work on this in small steps!
+            1. When you click a button, make your code log something to the console.
+                This way you can see if your event listener is linked properly!
+            2. When you click a button, make the number/operation appear in the calc-preview div.
+            3. ......
+        */
+    </script>
+    
+</body>
+</html>
