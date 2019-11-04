@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="res/css/style.css">
+</head>
+
+<body>
+    
+    <div class="container">
+
+        <h2 class="headertext">JUST ANOTHER FORM</h2>
+
+        <form name="myForm" action="index2.html" autocomplete="on" onsubmit="return validateForm()">
+            <p>First name:</p><input id="firstname" type="text" name="firstname" placeholder="First name" value="" required><br><br>
+            <p>Last name:</p><input id="lastname" type="text" name="lastname" placeholder="Last name" value="" required><br><br>
+            <p>Username:</p><input id="username" type="text" name="username" placeholder="Username" value="" required><br><br>
+            <p>Email:</p><input id="email" type="text" name="email" placeholder="Email" value="" required><br><br>
+            <p>Password:</p><input id="password" type="text" name="password" placeholder="Password" value="" required><br><br>       
+            <p>Confirm password:</p><input id="confirmpassword" type="text" name="confirmpassword" placeholder="Confirm password" value="" required><br><br>
+            <p>Adress:</p><input id="adress" type="text" name="adress" placeholder="Adress" value="" required><br><br>
+            <p>City:</p><input id="city" type="text" name="city" placeholder="City" value="" required><br><br>    
+            <p>Zip:</p><input id="zip" type="text" name="zip" placeholder="Zip" value="" required><br><br>
+            <p>Phone number:</p><input id="phone" type="text" name="phone" placeholder="Phone number" value=""><br><br>
+            <p>Age:</p><input id="age" type="text" name="age" placeholder="Age" value=""><br><br>
+            <p>Hobbies:</p><input id="hobbies" type="text" name="hobbies" placeholder="Hobbies" value=""><br><br>
+            <div class="buttonholder">
+                <input type="submit" value="Submit" id="btn">
+            </div>
+        </form>
+    </div>
+    <script src="res/js/script.js"></script>
+</body>
+
+</html>
