@@ -123,7 +123,7 @@
                 let remarks = document.getElementById("remarks").value;
 
                 if (name == "" ||pizza == "" || size == "")  { 
-                    alert("This field is required");  	
+                    alert("Name, Pizza and Size are required fields");  	
                 } else { var row = table.insertRow(1);
                          var cell1 = row.insertCell(0);
                          cell1.innerHTML = name;
@@ -163,13 +163,35 @@
             <button id="launchMe" class="btn btn-success play-button"><i class="fa fa-play"></i></button>
             <p id="listHolder">This is what you need to make delicious spaghetti:
                 <span>Pasta</span><span>Tomato Sauce</span><span>Cheese</span><span>Choose your final ingredient</span></p>
-
+                
             <br>
             <br>
 
         </div>
         <script>
-            // Write your code here
+
+            let bttn = document.getElementById("launchMe")
+            bttn.addEventListener("click", function(){
+                document.getElementById("listHolder")
+                listHolder.innerHTML = "";
+                make();
+            });
+
+            function make(){
+                let ingredients = {
+                "ingr1":"Pasta",
+                "ingr2":"Tomato sauce",
+                "ingr3":"cheese",
+                "ingr4":"<input type='text' id='finalingr' placeholder='Choose your final ingedriënt'>"
+            };
+
+            for (let info in ingredients){
+                let li = document.createElement("li");
+                li.innerHTML = ingredients[info];
+                document.getElementById("listHolder").appendChild(li);
+            }
+            }
+            
         </script>
     </div>
     <!-- END OF Part 3 -->
@@ -371,7 +393,44 @@
             <div id="moveAnimation" class="block"></div>
         </div>
         <script>
-            // Write your code here
+            
+            let row = document.getElementById("row");
+            moveright();
+            
+        
+            
+            function moveright() {
+                let elem = document.getElementById("moveAnimation");   
+                let pos = 0;
+                let id = setInterval(frame, 10);
+                //let width = block.closest(".row").offsetWidth;
+                function frame() {
+                    if (pos == 108) {
+                    clearInterval(id);
+                    moveleft();
+                    } else {
+                        pos++;  
+                        elem.style.left = pos + '2px'; 
+                    }
+                }
+            }    
+
+            function moveleft() {
+                let elem = document.getElementById("moveAnimation");   
+                let pos = 1094;
+                let id = setInterval(frame, 3);
+
+                function frame() {
+                    if (pos == 0) {
+                    clearInterval(id);
+                    moveright();
+                    } else {
+                        pos--;  
+                        elem.style.left = pos + 'px'; 
+                    }
+                }
+            }
+
         </script>
     </div>
     <!-- END OF Part 5 -->
@@ -387,7 +446,15 @@
             <div id="followMouse" class="block"></div>
         </div>
         <script>
-            // Write your code here
+            var mouse = document.getElementById('followMouse');
+            document.addEventListener('mousemove', function(m){
+                var x = m.clientX;
+                var y = m.clientY;
+                mouse.style.left = x + "px";
+                
+            });
+            
+
         </script>
     </div>
     <!-- END OF Part 6 -->
@@ -397,15 +464,56 @@
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4">
             <h3>Part 7: Sliders</h3>
             <p>Recreate this very intuitive user interface. Insert the DOM nodes (html elements) using document.createElement();</p>
-            <img src="./input.gif" alt="Interface" />
+            <img src="res/input.gif" alt="Interface" />
             <hr/>
             <br/>
 
             <div id="target"></div>
         </div>
         <script>
-            // Write your code here
+            const numb = ["A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"];
+            let target = document.getElementById("target");
+            target.innerHTML = "Enter your first name:<br>";
+            slider();
+
+            function slider(){
+                
+                let inputtext = document.createElement("input");
+                inputtext.classList.add("inputtext");
+                document.getElementById("target").appendChild(inputtext);
+                inputtext.setAttribute("type", "text");
+                inputtext.setAttribute("value", "");
+                
+                inputtext.addEventListener("click", function() {
+                    
+                    let inputrange = document.createElement("input");
+                    inputrange.classList.add("inputrange");
+                    document.getElementById("target").appendChild(inputrange);
+                    inputrange.setAttribute("type", "range");
+                    inputrange.setAttribute("min", "1");
+                    inputrange.setAttribute("max", "24");
+                    inputrange.setAttribute("value", "const")
+                });
+            }  
+            
+            
+         /*     
+            }
+                
+            let i = document.querySelector(".inputrange");
+            let o = document.getElementsByClassName("inputtext");
+            console.log(i)
+            i.addEventListener("input", function() {
+            o[0].innerHTML = i.value;
+            }, false); 
+
+            */
+                
+                
+            
         </script>
+            }
+                
     </div>
     <!-- END OF Part 7 -->
 

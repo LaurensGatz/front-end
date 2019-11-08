@@ -1,0 +1,50 @@
+.bonus {
+    color:#999;
+}
+
+.greetingsBoxHolder {
+    border:3px dashed #75cdcd;
+}
+
+#exercisesHolder .col-12.bg-white.shadow-sm.p-4.mx-auto.mt-4 {
+    margin-top:48px;
+    margin-bottom:48px;
+}
+
+.play-button {
+    position:absolute;
+    right:12px;
+    top:12px;
+}
+
+.block {
+    position: relative;
+    transform: translate(-50%);
+    left:0%;
+    width:48px;
+    height:48px;
+    background:green;
+}
+
+.highlight {
+    background-color:#333;
+    color:#fff;
+}
+
+.broken {
+    position:relative;
+    top:0;
+    left:0;
+    right:0;
+    transition:2s;
+    overflow:visible;
+    z-index:999;
+}
+
+body, html {
+    height:100vh !important;
+    width:100vw !important;
+    overflow:hidden !important;
+    left:0 !important;
+    top:0 !important;
+}
