@@ -70,7 +70,7 @@ let gameManager = {
         }
 
         getHeader.innerHTML = '<p>Task: choose your move</p>';
-        getActions.innerHTML = '<a href="#" class="btn-prefight" onclick="playerMoves.calcAttack()">Attack</a>';
+        getActions.innerHTML = '<a href="#" class="btn-prefight" onclick="playerMoves()">Attack</a>';
         getEnemy.innerHTML = '<img src="img/' +  enemy.enemyType.toLowerCase() + '.jpg" alt=""' + enemy.enemyType + 
         '"class="img-avatar"><div><h3>' + enemy.enemyType + '</h3><p class="enemy-health">Health: ' + enemy.health + ' </p><p>Attack: ' + enemy.attack + ' </p>' +
         '<p>Speed: ' + enemy.attack + ' </p>';
@@ -80,23 +80,28 @@ let gameManager = {
 }
 
 
-/*let playerr = {
+/*let player = {
     health: 300,
     power: 50,
     heal: 50
 }
 
-let opponentt = {
+let opponent = {
     health: 300,
     power: 50,
     heal: 50
 }
 
 let attackButton = document.getElementById('attack-button');
+let attackButton2 = document.getElementById('attack-button2');
 let healButton = document.getElementById('heal-button');
+let healButton2 = document.getElementById('heal-button2');
 let gameMessage = document.getElementById('game-message');
 let restartButton = document.getElementById('restart-button');
+let restartButton2 = document.getElementById('restart-button2');
 let yieldButton = document.getElementById('yield-button');
+let yieldButton2 = document.getElementById('yield-button2');
+
 const attack = () => {
     
     let playerAttack = attackPower(player.power);

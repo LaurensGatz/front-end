@@ -1,5 +1,12 @@
-let player;
- 
+let Player = new Player ();
+let Enemy = new Enemy ();
+
+function Enemy(enemyType, health, attack, speed) {
+    this.enemyType = enemyType;
+    this.health = health;
+    this.attack = attack;
+    this.speed = speed;
+}
 function Player(classType, health, attack, speed) {
     this.classType = classType;
     this.health = health;
@@ -8,31 +15,41 @@ function Player(classType, health, attack, speed) {
     
     
 }
+let getPlayerSpeed = Player.speed;
+let getEnemySpeed = Enemy.speed;
+let playerMoves = [];
 
-let playerMoves = {
-    let calcAttack = function() {
-        let getPlayerSpeed = player.speed;
-        let getEnemySpeed = enemy.speed;
+    let calcAttack = function () {
+        
     }
-    // player attacks
+    playerMoves.push(calcAttack);
+
+
+    
+   // player attacks
     let playerAttack = function() {
         let calcBaseDamage;
-        calcBaseDamage = player.attack * player.speed / 100;
+        calcBaseDamage = Player.attack * Player.speed / 100;
+        
     
     let offsetDamage = Math.floor(Math.random() * Math.floor(10));
     let calcOutputDamage = calcBaseDamage + offsetDamage;
     return calcOutputDamage;
     } 
+    playerMoves.push(playerAttack);
 
     // enemy attacks
     let enemyAttack = function() {
         let calcBaseDamage;
-        calcBaseDamage = enemy.attack * enemy.speed / 100;
+        calcBaseDamage = Enemy.attack * Enemy.speed / 100;
+
+        
 
     let offsetDamage = Math.floor(Math.random() * Math.floor(10));
     let calcOutputDamage = calcBaseDamage + offsetDamage;
     return calcOutputDamage;
     }
+    playerMoves.push(enemyAttack);
 
     // health
     let getPlayerHealth = document.querySelector(".health-player")
@@ -40,19 +57,19 @@ let playerMoves = {
 
     // player turn
     if (getPlayerSpeed >= getEnemySpeed) {
-        let playerAttackValues = playerAttack();
-        enemy.health = enemy.health - calcOutputDamage;
+        let damage = playerAttack();
+        Enemy.health = Enemy.health - damage;
         alert("You hit")
-        if (enemy.health <= O) {
+        if (Enemy.health <= O) {
             alert("You win !!")
-            getPlayerHealth.innerHTML = 'Health: ' + player.health;
+            getPlayerHealth.innerHTML = 'Health: ' + Player.health;
             getEnemyHealth.innerHTML = 'Health: 0';
         } else {
-            getEnemyHealth.innerHTML = 'Health: ' + enemy.health;
+            getEnemyHealth.innerHTML = 'Health: ' + Enemy.health;
             // enemy turn
             let enemyAttackValues = enemyAttack();
-            player.health = player.health - calcOutputDamage;
-        if (player.health <= O) {
+            Player.health = Player.health - calcOutputDamage;
+        if (Player.health <= O) {
             alert("You lose !!")
             getEnemyHealth.innerHTML = 'Health: ' + enemy.health;
             getPlayerHealth.innerHTML = 'Health: 0';
@@ -64,28 +81,28 @@ let playerMoves = {
 
     } else  if (getEnemySpeed >= getPlayerSpeed) {
         let playerAttackValues = enemyAttack();
-        player.health = player.health - calcOutputDamage;
+        Player.health = Player.health - calcOutputDamage;
         alert("Enemy hit")
-        if (player.health <= O) {
+        if (Player.health <= O) {
             alert("You Lose !!")
-            getEnemyHealth.innerHTML = 'Health: ' + enemy.health;
+            getEnemyHealth.innerHTML = 'Health: ' + Enemy.health;
             getPlayerHealth.innerHTML = 'Health: 0';
         } else {
-            getPlayerHealth.innerHTML = 'Health: ' + player.health;
+            getPlayerHealth.innerHTML = 'Health: ' + Player.health;
             // player  turn
             let playerAttackValues = playerAttack();
-            enemy.health = enemy.health - calcOutputDamage;
+            Enemy.health = Enemy.health - calcOutputDamage;
             alert("Enemy hit")
-        if (plenemyayer.health <= O) {
+        if (Enemy.health <= O) {
             alert("You win !!")
-            getPLayerHealth.innerHTML = 'Health: ' + player.health;
+            getPLayerHealth.innerHTML = 'Health: ' + Player.health;
             getEnemyHealth.innerHTML = 'Health: 0';
         }   else {
-            getEnemyHealth.innerHTML = 'Health: ' + enemy.health;
+            getEnemyHealth.innerHTML = 'Health: ' + Enemy.health;
         } 
         }
      
 
     }
-}
+
  

@@ -1,0 +1,237 @@
+body {
+    background-image: url("img/background.jpg");
+    background-size: cover;
+    padding: 0px 100px;
+    color: #12100E;
+    font-family: 'Almendra', serif;
+    
+}
+
+select {
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: bolder;
+    background-color: rgb(15, 59, 21);
+    border: 4px inset rgb(170, 148, 20);
+    color: white; 
+    margin: 5px 5px;
+    
+    
+}
+
+#logocont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#title {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    color: rgb(202, 18, 18);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+    
+button {	
+    color: rgb(25, 104, 36);	
+    position: relative;	
+    padding: 8px 16px;
+    font-size: 1.4rem;
+    color: rgb(170, 148, 20);
+    font-weight: bold;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+    user-select: none;
+    border: 4px inset rgb(170, 148, 20);
+    box-shadow: 3px 3px rgba(15, 15, 15, 0.658);
+}
+
+button:hover {
+    
+    color: white !important;
+    background-color: rgb(170, 148, 20);;
+    border-color: rgb(170, 148, 20); !important;
+    transition: all 0.4s ease 0s;
+}
+
+input {
+    padding: 5px 5px;
+    font-size: 16px;
+    border: 4px inset rgb(170, 148, 20);
+}
+#create {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+#arena {
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 4px inset rgb(170, 148, 20);
+    margin-top: 5px;    
+    padding: 5px 5px;
+    max-width: 100%;
+    background-color: #041b05dc; 
+    box-shadow: 3px 3px rgba(15, 15, 15, 0.658);
+}
+h1 {
+    text-align: center;
+    margin:10px 10px ;
+    color: white;
+
+}
+i {
+    display: inline;
+}
+p {
+    text-align: center;
+    margin:10px 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#displayrace1,#displayrace2 {
+    height: 150px;
+    width: 150px;
+}
+#named1,#named2 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+    display: inline;    
+} 
+.startgame {
+    margin-top: 10px;
+    text-align: center;
+}
+.player1 {
+    background-color:  #5ab30780;
+    margin: 10px 10px;
+    padding: 5px 5px;
+    border-radius: 3px;
+}
+.player2 {
+    background-color: #5ab30780;
+    margin: 10px 10px;
+    padding: 5px 5px;
+    border-radius: 3px;
+}
+
+
+.moves {
+    margin-top: 5px;
+    text-align: center;
+}
+img {
+    max-height: 150px;
+}
+.display {
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+.caption {
+    display: block;
+}
+#health1,#health2 {
+    text-align: center;
+    width: 200px;
+}
+#dis1 img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+#dis2 {
+    flex-direction: row-reverse;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+  
+.tooltip .tooltiptext {
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+.prog {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-bottom: 10px;
+color: white;
+}
+.proge {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+#log {
+max-width: 300px;
+min-width: 250px;
+height: 200px;
+background-color: #ece7d4;
+margin-top:10px ;
+overflow: auto;
+padding: 10px 10px;
+border: 4px inset rgb(170, 148, 20);
+color: #264609;
+font-family: Arial, Helvetica, sans-serif;
+font-style: italic;
+box-shadow: 3px 3px rgba(15, 15, 15, 0.658);
+}
+
+
+@media only screen and (max-width: 1050px) {
+#arena {
+    flex-direction: column;
+}
+
+}
+@media only screen and (max-width: 900px) {
+    #create{
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 560px){
+    #displayrace1,#displayrace2 {
+        height: 100px;
+        width: 100px;
+    }
+    #displayitem1,#displayitem2 {
+        height: 100px;
+        width: 100px;
+    }
+}
+@media only screen and (max-width: 380px) {
+    img{
+        max-width: 100px;
+    }
+    body{
+        background-size: contain;
+    }
